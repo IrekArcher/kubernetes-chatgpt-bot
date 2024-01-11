@@ -21,7 +21,7 @@ class ChatGPTParams(ChatGPTTokenParams):
     :var model: ChatGPT OpenAi API model
     """
     search_term: str
-    model: str = "gpt-3.5-turbo"
+    model: str = "gpt-35-turbo"
 
 
 @action
