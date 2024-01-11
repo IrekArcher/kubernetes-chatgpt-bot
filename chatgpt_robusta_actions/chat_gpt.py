@@ -33,6 +33,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
     openai.api_base = "https://datalab-openai-dev.openai.azure.com/"
     openai.api_key = params.chat_gpt_token
     openai.api_type = 'azure'
+    openai.api_version = '2023-05-15'
     print(f"ChatGPT search term: {params.search_term}")
     logging.info(f"ChatGPT search term: {params.search_term}")
 
