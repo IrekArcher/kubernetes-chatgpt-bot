@@ -51,7 +51,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             ]
             print(f"ChatGPT input: {input}")
             logging.info(f"ChatGPT input: {input}")
-            client = AzureOpenAI(
+            client = openai.AzureOpenAI(
                 api_key=params.chat_gpt_token,  
                 api_version='2023-05-15',
                 azure_endpoint = "https://datalab-openai-dev.openai.azure.com/"
