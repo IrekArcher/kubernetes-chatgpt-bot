@@ -3,7 +3,7 @@ import time
 
 import cachetools
 import openai
-from openai.openai_object import OpenAIObject
+#from openai.openai_object import OpenAIObject
 from robusta.api import *
 
 cache_size = 100
@@ -56,7 +56,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
                 api_version='2023-05-15',
                 azure_endpoint = "https://datalab-openai-dev.openai.azure.com/"
             )
-            res: OpenAIObject = client.chat.completions.create(
+            res = client.chat.completions.create(
                 model="gpt-35-turbo",
                 messages={
                     "role": "user",
