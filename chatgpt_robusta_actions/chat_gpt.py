@@ -51,7 +51,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             ]
             print(f"ChatGPT input: {input}")
             logging.info(f"ChatGPT input: {input}")
-            res: OpenAIObject = openai.ChatCompletion.create(
+            res: OpenAIObject = openai.Completion.create(
                 engine=params.model,
                 prompt=input,
                 max_tokens=1000,
