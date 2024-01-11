@@ -30,6 +30,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
     Add a finding with ChatGPT top results for the specified search term.
     This action can be used together with the stack_overflow_enricher.
     """
+    openai.base_url = "https://datalab-openai-dev.openai.azure.com/"
     openai.api_key = params.chat_gpt_token
 
     logging.info(f"ChatGPT search term: {params.search_term}")
