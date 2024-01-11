@@ -51,11 +51,17 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             ]
             print(f"ChatGPT input: {input}")
             logging.info(f"ChatGPT input: {input}")
-            res: OpenAIObject = openai.Completion.create(
-                engine="gpt-35",
-                prompt=input,
-                max_tokens=1000,
-                temperature=0
+            client = AzureOpenAI(
+                api_key=params.chat_gpt_token,  
+                api_version='2023-05-15',
+                azure_endpoint = "https://datalab-openai-dev.openai.azure.com/"
+            )
+            res: OpenAIObject = client.chat.completions.create(
+                model="gpt-35-turbo",
+                messages={
+                    "role": "user",
+                    "content": input,
+                },
             )
             if res:
                 logging.info(f"ChatGPT response: {res}")
