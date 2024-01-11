@@ -21,7 +21,7 @@ class ChatGPTParams(ChatGPTTokenParams):
     :var model: ChatGPT OpenAi API model
     """
     search_term: str
-    model: str = "gpt-35-turbo"
+    model: str = "gpt-35"
 
 
 @action
@@ -52,7 +52,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             print(f"ChatGPT input: {input}")
             logging.info(f"ChatGPT input: {input}")
             res: OpenAIObject = openai.Completion.create(
-                engine=params.model,
+                engine="gpt-35",
                 prompt=input,
                 max_tokens=1000,
                 temperature=0
