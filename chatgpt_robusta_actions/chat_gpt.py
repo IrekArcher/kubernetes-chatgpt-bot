@@ -47,7 +47,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
                 {"role": "user", "content": f"When responding, you use Slack specific markdown following the rules provided. Always bold and italic headings, i.e '*_The heading:_*', to clearly seperate the content with headers. Don't include any conversational response before the facts."},
                 {"role": "user", "content": f"Please describe what the Kubernetes Prometheus alert '{params.search_term}' means, giving succinct examples of common causes. Provide any possible solutions including any troubleshooting steps that can be performed, give a real world example of a situation that can cause the alert can occur. Clearly seperate sections for Alert Name, Description, Real World Example, Common Causes, Troubleshooting Steps and Possible Solutions."},
             ]
-
+            print(f"ChatGPT input: {input}")
             logging.info(f"ChatGPT input: {input}")
             res: OpenAIObject = openai.ChatCompletion.create(
                 model=params.model,
@@ -75,7 +75,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
         source=FindingSource.PROMETHEUS,
         aggregation_key="ChatGPT Wisdom",
     )
-
+    print(answers)
     if answers:
         finding.add_enrichment([MarkdownBlock('\n'.join(answers))])
     else:
