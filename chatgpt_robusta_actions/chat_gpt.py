@@ -58,10 +58,7 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             )
             res = client.chat.completions.create(
                 model="gpt-35-turbo",
-                messages={
-                    "role": "user",
-                    "content": input,
-                },
+                messages=input
             )
             if res:
                 logging.info(f"ChatGPT response: {res}")
