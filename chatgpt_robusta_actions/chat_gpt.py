@@ -62,14 +62,14 @@ def show_chat_gpt_search(event: ExecutionBaseEvent, params: ChatGPTParams):
             )
             if res:
                 logging.info(f"ChatGPT response: {res}")
-                total_tokens = res.usage['total_tokens']
+                #total_tokens = res.usage['total_tokens']
                 time_taken = time.time() - start_time
                 response_content = res.choices[0].message.content
                 lru_cache[params.search_term] = [response_content]  # Store only the main response in the cache
                 answers.append(response_content)
 
             answers.append(f"\n\n ---")
-            answers.append(f"\n\n | Time taken: {time_taken:.2f} seconds | Total tokens used: {total_tokens} |")
+            answers.append(f"\n\n | Time taken: {time_taken:.2f} seconds |")
                 
     except Exception as e:
         answers.append(f"Error calling ChatCompletion.create: {e}")
